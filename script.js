@@ -15,7 +15,7 @@ function spawnSoldiers() {
 
     blueButton.addEventListener("click", () => {
         // Logic to spawn blue soldiers
-        let randomSoldierX = Math.random() * (canvas.width)/4;
+        let randomSoldierX = Math.random() * (canvas.width / 10);
         let randomSoldierY = Math.random() * canvas.height;
         soldiers.push({
             x: randomSoldierX,
