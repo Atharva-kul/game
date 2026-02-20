@@ -56,8 +56,37 @@ function animate() {
         ctx.fillStyle = soldier.color;
         ctx.fillRect(soldier.x, soldier.y, 5, 5);
     })
+
+    checkSoldierCollisions();
+
     requestAnimationFrame(animate);
 }
+
+function checkSoldierCollisions() {
+    // Loop backward through the array
+    for (let i = soldiers.length - 1; i >= 0; i--) {
+        for (let j = i - 1; j >= 0; j--) {
+            const soldierA = soldiers[i];
+            const soldierB = soldiers[j];
+
+            // Safety check in case they were already removed
+            if (!soldierA || !soldierB) continue;
+
+            if (Math.abs(soldierA.x - soldierB.x) < 5 && 
+                Math.abs(soldierA.y - soldierB.y) < 5) {
+                
+                // Remove the higher index first (i), then the lower (j)
+                soldiers.splice(i, 1);
+                soldiers.splice(j, 1);
+                
+                // Break inner loop, but outer loop will continue correctly
+                break; 
+                console.log("Collision detected! Soldiers removed.");
+            }
+        }
+    }
+}
+
 
 animate();
 spawnSoldiers();
