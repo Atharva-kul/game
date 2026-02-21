@@ -76,12 +76,18 @@ function checkSoldierCollisions() {
                 Math.abs(soldierA.y - soldierB.y) < 5) {
                 
                 // Remove the higher index first (i), then the lower (j)
-                soldiers.splice(i, 1);
-                soldiers.splice(j, 1);
+                //soldiers.splice(i, 1);
+                //soldiers.splice(j, 1);
+                soldierA.color="purple"
+                soldierB.color="purple"
+                soldierA.speed=0
+                soldierB.speed=0
+
+                //console.log("Murasaki!")
                 
                 // Break inner loop, but outer loop will continue correctly
                 break; 
-                console.log("Collision detected! Soldiers removed.");
+                //console.log("Collision detected! Soldiers removed.");
             }
         }
     }
