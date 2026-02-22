@@ -51,7 +51,7 @@ function animate() {
 
     soldiers.forEach(soldier => {
         // Move soldiers randomly
-        soldier.x += (Math.random() - 0.1) * soldier.speed;
+        soldier.x += (Math.random()) * soldier.speed;
         //soldier.y += (Math.random() - 0.1) * soldier.speed;
         ctx.fillStyle = soldier.color;
         ctx.fillRect(soldier.x, soldier.y, 5, 5);
