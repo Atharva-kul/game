@@ -46,19 +46,23 @@ function spawnSoldiers() {
     });
 }
 
-function animate() {
+let lastTime = 0;
+
+function animate(timestamp) {
+    const deltaTime = (timestamp - lastTime) / 30; // Time in seconds
+    lastTime = timestamp;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     soldiers.forEach(soldier => {
-        // Move soldiers randomly
-        soldier.x += (Math.random()) * soldier.speed;
-        //soldier.y += (Math.random() - 0.1) * soldier.speed;
+        // Move at a constant pixels-per-second rate
+        soldier.x += soldier.speed * deltaTime;
+        
         ctx.fillStyle = soldier.color;
         ctx.fillRect(soldier.x, soldier.y, 5, 5);
-    })
+    });
 
-    checkSoldierCollisions();
-
+    checkSoldierCollisions()
     requestAnimationFrame(animate);
 }
 
